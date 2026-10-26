@@ -1,0 +1,12 @@
+{
+  "name": "makmal-uasa-sains-t6",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Latihan UASA Sains Tahun 6 dengan pemarkahan dan semakan KPS",
+  "scripts": {
+    "check": "node --check dist/app.js && node --check dist/questions.js",
+    "test": "node tests.cjs",
+    "build": "npm run check && npm test"
+  },
+  "engines": { "node": ">=22" }
+}
