@@ -1,8 +1,17 @@
-# Makmal UASA - Sains Tahun 6
+# Makmal UASA - Tahun 6 (Sains & Sejarah)
 
-Laman latihan UASA Sains Tahun 6 berdasarkan topik ulang kaji yang diberikan: **50 markah, 75 minit**.
+Laman latihan UASA Tahun 6 dengan pemilihan subjek. Setiap kertas bernilai **50 markah, 75 minit**.
 
-## Ciri
+| Subjek | A | B | C |
+| --- | --- | --- | --- |
+| Sains | 10 soalan / 10 markah | 2 soalan / 8 markah | 4 soalan / 32 markah |
+| Sejarah | 20 soalan / 20 markah | 4 soalan / 20 markah | 2 soalan / 10 markah |
+
+Halaman utama: `index.html`. Kertas: `sains.html` dan `sejarah.html`. Rekod setiap subjek menggunakan kunci localStorage berasingan. Rekod Sains versi awal dikekalkan.
+
+Rujukan dan pemetaan topik Sejarah: [docs/SEJARAH_CONTENT.md](docs/SEJARAH_CONTENT.md).
+
+## Ciri Sains
 
 - Bahagian A: 10 soalan objektif, 10 markah.
 - Bahagian B: 2 soalan berstruktur, 8 markah.
@@ -65,8 +74,13 @@ dist/             Aplikasi siap untuk dihoskan
   style.css
   questions.js    Kandungan soalan dan skema
   app.js          Aliran peperiksaan dan pemarkahan
-tests.cjs         Ujian pemarkahan dan pemasa
+tests.cjs         Ujian regresi Sains dan pemasa
+tests-history.cjs Ujian Sejarah dan pengasingan rekod
 wrangler.jsonc    Konfigurasi Cloudflare
 ```
 
 Repo ini bebas daripada identiti projek Sites. Konfigurasi Cloudflare tidak menyasarkan AdvisorLink atau projek Mamu yang lain.
+
+## Ciri Sejarah
+
+20 objektif, 4 soalan padanan / pilihan berstruktur, 2 soalan respons bertulis. Semua topik panduan diliputi. Pemarkahan A/B automatik; C dicadangkan mengikut kelompok isi berbeza dan disemak ibu bapa. Ruang jawapan C meminta dua isi berbeza atau tindakan + huraian + kesan, dengan skema terperinci.

@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
-let code=fs.readFileSync('dist/questions.js','utf8')+'\n'+fs.readFileSync('dist/app.js','utf8');
+let code=fs.readFileSync('dist/subjects.js','utf8')+'\n'+fs.readFileSync('dist/questions.js','utf8')+'\n'+fs.readFileSync('dist/app.js','utf8');
 // Run data and marking functions without browser initialization.
 code=code.replace("setInterval(tick,1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});welcome();",'');
 const ctx=vm.createContext({document:{querySelector:()=>null},localStorage:{getItem:()=>null},Date,console,setTimeout});vm.runInContext(code,ctx);

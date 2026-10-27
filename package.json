@@ -2,11 +2,13 @@
   "name": "makmal-uasa-sains-t6",
   "version": "1.0.0",
   "private": true,
-  "description": "Latihan UASA Sains Tahun 6 dengan pemarkahan dan semakan KPS",
+  "description": "Latihan UASA Sains dan Sejarah Tahun 6 dengan pemarkahan dan skema",
   "scripts": {
-    "check": "node --check dist/app.js && node --check dist/questions.js",
-    "test": "node tests.cjs",
+    "check": "node --check dist/app.js && node --check dist/questions.js && node --check dist/questions-sejarah.js && node --check dist/subjects.js && node --check dist/home.js",
+    "test": "node tests.cjs && node tests-history.cjs",
     "build": "npm run check && npm test"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  }
 }
