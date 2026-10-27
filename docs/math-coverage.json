@@ -1,0 +1,37 @@
+{
+  "total": 50,
+  "topics": [
+    {
+      "topic": "Nombor bulat dan operasi asas",
+      "marks": 6
+    },
+    {
+      "topic": "Pecahan, perpuluhan dan peratus",
+      "marks": 7
+    },
+    {
+      "topic": "Wang",
+      "marks": 6
+    },
+    {
+      "topic": "Masa dan waktu",
+      "marks": 6
+    },
+    {
+      "topic": "Ukuran dan sukatan",
+      "marks": 6
+    },
+    {
+      "topic": "Ruang",
+      "marks": 6
+    },
+    {
+      "topic": "Koordinat, nisbah dan kadaran",
+      "marks": 7
+    },
+    {
+      "topic": "Pengurusan data dan kebolehjadian",
+      "marks": 6
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-# Makmal UASA - Tahun 6 (Sains & Sejarah)
+# Makmal UASA - Tahun 6 (Sains, Sejarah & Matematik)
 
 Laman latihan UASA Tahun 6 dengan pemilihan subjek. Setiap kertas bernilai **50 markah, 75 minit**.
 
@@ -6,8 +6,9 @@ Laman latihan UASA Tahun 6 dengan pemilihan subjek. Setiap kertas bernilai **50 
 | --- | --- | --- | --- |
 | Sains | 10 soalan / 10 markah | 2 soalan / 8 markah | 4 soalan / 32 markah |
 | Sejarah | 20 soalan / 20 markah | 4 soalan / 20 markah | 2 soalan / 10 markah |
+| Matematik | 13 soalan / 26 markah | 2 soalan / 24 markah | Tiada |
 
-Halaman utama: `index.html`. Kertas: `sains.html` dan `sejarah.html`. Rekod setiap subjek menggunakan kunci localStorage berasingan. Rekod Sains versi awal dikekalkan.
+Halaman utama: `index.html`. Kertas: `sains.html`, `sejarah.html` dan `matematik.html`. Rekod setiap subjek menggunakan kunci localStorage berasingan. Rekod Sains versi awal dikekalkan.
 
 Rujukan dan pemetaan topik Sejarah: [docs/SEJARAH_CONTENT.md](docs/SEJARAH_CONTENT.md).
 
@@ -84,3 +85,7 @@ Repo ini bebas daripada identiti projek Sites. Konfigurasi Cloudflare tidak meny
 ## Ciri Sejarah
 
 20 objektif, 4 soalan padanan / pilihan berstruktur, 2 soalan respons bertulis. Semua topik panduan diliputi. Pemarkahan A/B automatik; C dicadangkan mengikut kelompok isi berbeza dan disemak ibu bapa. Ruang jawapan C meminta dua isi berbeza atau tindakan + huraian + kesan, dengan skema terperinci.
+
+## Ciri Matematik
+
+Kertas Tahun 6 sahaja, dengan lapan unit diagih 6-7 markah setiap unit. Format A13/26 dan B2/24, 75 minit, jawapan subjektif. Rajah bulatan, grid dan carta pai adalah SVG tepat. Jawapan akhir disemak mengikut nilai; jalan kerja disimpan untuk semakan markah kaedah. Kiraan automatik ialah cadangan sehingga disemak ibu bapa. Gred dan rekod subjek berasingan. Lihat [docs/MATEMATIK_CONTENT.md](docs/MATEMATIK_CONTENT.md) untuk skop, jadual markah, pemarkahan dan rujukan KPM.

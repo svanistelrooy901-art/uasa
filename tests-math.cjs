@@ -1,0 +1,25 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
+const app=fs.readFileSync('dist/app.js','utf8').replace("setInterval(tick,1000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});welcome();",'');
+const records=new Map(),ctx=vm.createContext({document:{documentElement:{dataset:{subject:'matematik'}},querySelector:()=>null},localStorage:{getItem:k=>records.get(k)||null,setItem:(k,v)=>records.set(k,v)},Date,setTimeout,console});
+const run=s=>vm.runInContext(s,ctx);run(fs.readFileSync('dist/subjects.js','utf8')+'\n'+fs.readFileSync('dist/questions-matematik.js','utf8')+'\n'+app);
+run("state={version:1,status:'exam',started:Date.now(),answers:{},workings:{},overrides:{},flags:[],index:0}");
+assert.equal(run('QUESTIONS.length'),15);assert.equal(run('fields.length'),26);assert.equal(run('EXAM.sections.length'),2);
+assert.equal(run('total()'),0);assert.equal(run('STORE'),'makmal-uasa-matematik6-v1');assert.equal(run('DURATION'),75*60*1000);
+assert.deepEqual(JSON.parse(run("JSON.stringify(sectionIds.map(s=>fields.filter(f=>f.section===s).reduce((n,f)=>n+f.max,0)))")),[26,24]);
+const coverage=JSON.parse(fs.readFileSync('docs/math-coverage.json','utf8'));
+assert.equal(coverage.total,50);assert.equal(coverage.topics.length,8);assert.deepEqual(coverage.topics.map(t=>t.marks),[6,7,6,6,6,6,7,6]);
+for(const t of coverage.topics)assert.equal(run(`fields.filter(f=>f.topic===${JSON.stringify(t.topic)}).reduce((n,f)=>n+f.max,0)`),t.marks);
+for(const [input,expected] of [['750 000',750000],['1,950,000',1950000],['8.400',8.4],['1 1/2',1.5],['3/2',1.5],['0',0],['.75',.75]])assert.equal(run(`numericValue(${JSON.stringify(input)})`),expected);
+for(const bad of ['', ' ', '1/0','2+2','1e6','Infinity','0x10','1,25','1 2','9 m','alert(1)','3 or 4'])assert.equal(run(`numericValue(${JSON.stringify(bad)})`),null,bad);
+assert.equal(run("numericValue('RM204.00',['RM','ringgit'])"),204);assert.equal(run("numericValue('9 cm',['cm','sentimeter'])"),9);assert.equal(run("numericValue('9 km',['cm','sentimeter'])"),null);
+assert.equal(run("timeValue('01:30')"),90);assert.equal(run("timeValue('0130')"),90);assert.equal(run("timeValue('pukul 01.30')"),90);assert.equal(run("timeValue('25:00')"),null);assert.equal(run("timeValue('12:60')"),null);assert.equal(run("timeValue('01:30 esok')"),null);
+run("fields.forEach(f=>state.answers[f.id]=f.type==='math'?String(f.answer):'Tiada bola hijau di dalam kotak.')");assert.equal(run('total()'),50);
+run("state.answers.a8b='13/11/2026';state.answers.a7='1215';state.answers.a5='RM204.00';state.answers.a3='6/2'");assert.equal(run('total()'),50);
+run("state.answers.a10='9 m'");assert.equal(run('score(fields.find(f=>f.id===\'a10\'))'),0);
+run("state.answers.a10='9cm';state.answers.a4='8.5';state.workings.a4='67.2 ÷ 8 = 8.5'");assert.equal(run('total()'),48);run('state.overrides.a4=1');assert.equal(run('total()'),49);
+run("state.workings.a4='67.2 ÷ 8 = 8.5';persist()");assert.ok(records.has('makmal-uasa-matematik6-v1'));assert.ok(!records.has('makmal-uasa-sains6-v1'));assert.ok(!records.has('makmal-uasa-sejarah6-v1'));assert.equal(JSON.parse(records.get('makmal-uasa-matematik6-v1')).workings.a4,'67.2 ÷ 8 = 8.5');
+assert.ok(fs.readFileSync('dist/index.html','utf8').includes('href="matematik.html"'));
+for(const q of JSON.parse(run('JSON.stringify(QUESTIONS)'))){for(const f of q.fields){assert.ok(f.model&&f.max>0&&f.topic);if(f.kind==='number')assert.ok(Number.isFinite(f.answer));}if(q.image)assert.ok(fs.existsSync('dist/'+q.image));}
+assert.ok(run('nav()').includes('A13'));assert.ok(run('nav()').includes('B2'));assert.ok(!run('nav()').includes('BAHAGIAN C'));
+const html=fs.readFileSync('dist/matematik.html','utf8');assert.ok(html.includes('data-subject="matematik"'));assert.ok(html.includes('questions-matematik.js'));
+console.log('PASS: Maths 13+2 format, 26/24 marks, eight units weighted 6-7 marks, all keys, equivalent fractions/numbers, unit validation, time/date formats, safe parsing, partial override, saved workings, separate storage, two-section navigation.');
