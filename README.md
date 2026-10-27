@@ -89,3 +89,7 @@ Repo ini bebas daripada identiti projek Sites. Konfigurasi Cloudflare tidak meny
 ## Ciri Matematik
 
 Kertas Tahun 6 sahaja, dengan lapan unit diagih 6-7 markah setiap unit. Format A13/26 dan B2/24, 75 minit, jawapan subjektif. Rajah bulatan, grid dan carta pai adalah SVG tepat. Jawapan akhir disemak mengikut nilai; jalan kerja disimpan untuk semakan markah kaedah. Kiraan automatik ialah cadangan sehingga disemak ibu bapa. Gred dan rekod subjek berasingan. Lihat [docs/MATEMATIK_CONTENT.md](docs/MATEMATIK_CONTENT.md) untuk skop, jadual markah, pemarkahan dan rujukan KPM.
+
+## Matematik Set 2
+
+Pilih **Set 1** atau **Set 2** pada kad Matematik atau bar pilihan set. Set 2 berada di `matematik-set2.html` dengan soalan dan rajah baharu, format serta agihan topik yang sama. Rekod dan eksport berasingan; Set 1 kekal. Pemarkahan jalan kerja sama seperti Set 1: tidak dinilai automatik, boleh disemak untuk markah separa oleh ibu bapa. Butiran: [docs/MATEMATIK_SET2.md](docs/MATEMATIK_SET2.md).

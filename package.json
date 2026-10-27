@@ -4,8 +4,8 @@
   "private": true,
   "description": "Latihan UASA Sains, Sejarah dan Matematik Tahun 6 dengan pemarkahan dan skema",
   "scripts": {
-    "check": "node --check dist/app.js && node --check dist/questions.js && node --check dist/questions-sejarah.js && node --check dist/subjects.js && node --check dist/home.js && node --check dist/questions-matematik.js",
-    "test": "node tests.cjs && node tests-history.cjs && node tests-math.cjs",
+    "check": "node --check dist/app.js && node --check dist/questions.js && node --check dist/questions-sejarah.js && node --check dist/subjects.js && node --check dist/home.js && node --check dist/questions-matematik.js && node --check dist/questions-matematik-set2.js",
+    "test": "node tests.cjs && node tests-history.cjs && node tests-math.cjs && node tests-math-set2.cjs",
     "build": "npm run check && npm test"
   },
   "engines": {
